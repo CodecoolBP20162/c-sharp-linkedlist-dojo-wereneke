@@ -1,8 +1,8 @@
-public interface LinkedListW<T, V> {
+public interface LinkedListW {
 
-    T head();
-    T last();
+    Node head();
+    Node last();
     int length();
-    void append();
-    void deleteWithValue(V value);
+    void append(int value);
+    void deleteWithValue(int value);
 }
