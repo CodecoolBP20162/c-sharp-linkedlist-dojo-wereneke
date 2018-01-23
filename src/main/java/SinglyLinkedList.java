@@ -42,8 +42,14 @@ public class SinglyLinkedList implements LinkedListW {
     @Override
     public void deleteWithValue(int value) {
 
+        if (head == null) return;
         Node current = head;
-        if (current.data == value) head = current.next;
+        while (current.next != null) {
+            if (current.next.data == value) {
+                current.next = current.next.next;
+                return;
+            }
+        }
     }
 
     @Override

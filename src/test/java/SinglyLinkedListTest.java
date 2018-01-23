@@ -51,4 +51,14 @@ class SinglyLinkedListTest {
         list.deleteWithValue(3);
         assertEquals(2, list.head().data);
     }
+
+    @Test
+    void testIfDeleteWorksOnNodesInTheMiddle() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.append(3);
+        list.append(2);
+        list.append(1);
+        list.deleteWithValue(2);
+        assertEquals("31", list.toString());
+    }
 }
