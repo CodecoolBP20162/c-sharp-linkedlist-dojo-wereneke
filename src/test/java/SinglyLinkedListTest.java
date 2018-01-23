@@ -29,9 +29,26 @@ class SinglyLinkedListTest {
     @Test
     void testLength() {
         SinglyLinkedList list = new SinglyLinkedList();
-        list.append(1);
-        list.append(2);
         list.append(3);
+        list.append(2);
+        list.append(1);
         assertEquals(3, list.length());
+    }
+
+    @Test
+    void testDeleteWithValueOn1elemList() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.append(3);
+        list.deleteWithValue(3);
+        assertNull(list.head());
+    }
+
+    @Test
+    void testIfDeleting1stElemWorks() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.append(3);
+        list.append(2);
+        list.deleteWithValue(3);
+        assertEquals(2, list.head().data);
     }
 }

@@ -1,7 +1,7 @@
 public class SinglyLinkedList implements LinkedListW {
 
 
-    Node head;
+    private Node head;
 
     @Override
     public Node head() {
@@ -18,9 +18,13 @@ public class SinglyLinkedList implements LinkedListW {
 
     @Override
     public int length() {
-        Node last = head;
+        Node current = head;
         int length = 0;
-        while (last.next != null) length++;
+        if (current != null) length++;
+        while (current.next != null) {
+            length++;
+            current = current.next;
+        }
         return length;
     }
 
@@ -38,6 +42,8 @@ public class SinglyLinkedList implements LinkedListW {
     @Override
     public void deleteWithValue(int value) {
 
+        Node current = head;
+        if (current.data == value) head = current.next;
     }
 
     @Override
