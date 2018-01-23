@@ -53,7 +53,22 @@ public class SinglyLinkedList implements LinkedListW {
     }
 
     @Override
+    public void insert(int index, int value) throws IndexOutOfBoundsException {
+
+        if (index < 0 || index > length()) throw new IndexOutOfBoundsException();
+
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        Node tail = current.next;
+        current.next = new Node(value);
+        current.next.next = tail;
+    }
+
+    @Override
     public String toString() {
+
         StringBuilder sb = new StringBuilder("");
         Node current = head;
         while (current != null) {

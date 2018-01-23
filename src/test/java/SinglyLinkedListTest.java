@@ -61,4 +61,30 @@ class SinglyLinkedListTest {
         list.deleteWithValue(2);
         assertEquals("31", list.toString());
     }
+
+    @Test
+    void testInsertThrowsProperException()
+    {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.insert(4, 4));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.insert(-1, -1));
+    }
+
+    @Test
+    void testInsertWorksOnLowerBound() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.append(1);
+        list.insert(0, 0);
+        assertEquals(0, list.head().data);
+    }
+    @Test
+    void testInsertWorksOnUpperBound() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.append(1);
+        list.insert(1, 2);
+        assertEquals("12", list.toString());
+    }
 }
