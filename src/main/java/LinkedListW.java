@@ -4,6 +4,7 @@ public interface LinkedListW {
     Node last();
     int length();
     void append(int value);
+    void prepend(int value);
     void deleteWithValue(int value);
     void insert(int index, int value) throws IndexOutOfBoundsException;
 }

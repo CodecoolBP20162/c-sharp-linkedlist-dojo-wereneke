@@ -14,7 +14,9 @@ class SinglyLinkedListTest {
     void testAppend1element() {
         SinglyLinkedList list = new SinglyLinkedList();
         list.append(1);
-        assertEquals("1", list.toString());
+        list.append(1);
+        list.append(1);
+        assertTrue("111".equals(list.toString()));
     }
 
     @Test
@@ -81,10 +83,41 @@ class SinglyLinkedListTest {
         assertEquals(0, list.head().data);
     }
     @Test
-    void testInsertWorksOnUpperBound() {
+    void testInsertWorksOn2placeAsLastPlace() {
         SinglyLinkedList list = new SinglyLinkedList();
         list.append(1);
         list.insert(1, 2);
-        assertEquals("12", list.toString());
+        assertTrue("12".equals(list.toString()));
+    }
+
+    @Test
+    void testInsertWorksOn2place() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.append(1);
+        list.append(3);
+        list.insert(1, 2);
+        assertEquals("123", list.toString());
+    }
+
+    @Test
+    void testInsertWorksOnArbitraryPlace() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        list.append(5);
+        list.insert(3, 4);
+        assertEquals("12345", list.toString());
+    }
+
+    @Test
+    void testInsertWorksOnLastPlace() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.insert(4, 5);
+        assertEquals("12345", list.toString());
     }
 }

@@ -1,7 +1,7 @@
 public class SinglyLinkedList implements LinkedListW {
 
 
-    private Node head;
+    protected Node head;
 
     @Override
     public Node head() {
@@ -40,6 +40,19 @@ public class SinglyLinkedList implements LinkedListW {
     }
 
     @Override
+    public void prepend(int data) {
+
+        Node toPrepend = new Node(data);
+        if (head == null) {
+            head = toPrepend;
+            return;
+        }
+
+        toPrepend.next = head;
+        head = toPrepend;
+    }
+
+    @Override
     public void deleteWithValue(int value) {
 
         if (head == null) return;
@@ -53,17 +66,25 @@ public class SinglyLinkedList implements LinkedListW {
     }
 
     @Override
-    public void insert(int index, int value) throws IndexOutOfBoundsException {
+    public void insert(int index, int data) throws IndexOutOfBoundsException {
 
         if (index < 0 || index > length()) throw new IndexOutOfBoundsException();
 
-        Node current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
+        if (index==0) {
+            prepend(data);
+            return;
         }
-        Node tail = current.next;
-        current.next = new Node(value);
-        current.next.next = tail;
+
+        Node before = head;
+        Node toInsert = new Node(data);
+
+        for (int i=0; i<index-1; i++) {
+            before = before.next;
+        }
+
+        toInsert.next = before.next;
+        before.next = toInsert;
+        return;
     }
 
     @Override
@@ -77,4 +98,5 @@ public class SinglyLinkedList implements LinkedListW {
         }
         return sb.toString();
     }
+
 }
