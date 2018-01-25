@@ -87,14 +87,15 @@ public class DoublyLinkedList implements LinkedListW {
             return;
         }
 
-        BidirectionalNode before = head;
         BidirectionalNode toInsert = new BidirectionalNode(value);
 
         if (index<=length()/2) {
 
+            BidirectionalNode before = head;
             for (int i=0; i<index-1; i++) {
                 before = before.next;
             }
+            before.next.previous = toInsert;
             toInsert.next = before.next;
             before.next = toInsert;
             toInsert.previous = before;
@@ -102,9 +103,10 @@ public class DoublyLinkedList implements LinkedListW {
         else {
 
             BidirectionalNode after = tail;
-            for (int i=length(); i>index; i--) {
+            for (int i=length(); i>index+1; i--) {
                 after = after.previous;
             }
+            after.previous.next = toInsert;
             toInsert.previous = after.previous;
             toInsert.next = after;
             after.previous = toInsert;
